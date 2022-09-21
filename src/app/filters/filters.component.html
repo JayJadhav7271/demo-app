@@ -1,0 +1,72 @@
+
+<div class="panel panel-default panel-custom" >
+    <div class="panel-body">
+        <!-- <div class="row d-flex p-3">
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="oneway" name="optradio" value="oneway" checked>One Way
+                <label class="form-check-label" for="oneway"></label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" id="return-flight" name="optradio" value="return">Round Trip
+                <label class="form-check-label" for="return-flight"></label>
+              </div>
+        </div> -->
+
+        <div class="row d-flex p-3">
+            <div class="p-2">
+                <select class="form-control input-sm" id="origin" [(ngModel)]="originSelection">
+                    <!-- <option value="">Select Origin</option> -->
+                    <option *ngFor="let elt of airports" [ngValue]="elt">
+                        {{elt.name}}
+                      </option>
+                </select>
+              </div>
+              <div class="p-2">
+                <select class="form-control input-sm" id="destination" [(ngModel)]="destinationSelection">
+                    <option *ngFor="let elt of airports" [ngValue]="elt">
+                        {{elt.name}}
+                      </option>
+                </select>
+              </div>
+
+              <div class="p-2">
+                <input type="date" class="form-control input-sm" min="{{minDate}}" id="departure-date" placeholder="Departure"  [(ngModel)]="departureDate"/>
+              </div>
+              <!-- <div class="p-2">
+                <input type="date" class="form-control input-sm" id="arrival-date" placeholder="Arrival Date"  [(ngModel)]="arrivalDate"/>
+              </div> -->
+              <div class="p-2">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ adults + childrens + infants}} Travellers
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li class="d-flex">
+                            <span>Adults</span>
+                            <button class="btn-danger" style="border-radius: 25px">-</button>
+                            <input type="text" class="form-control input-sm" [(ngModel)]="adults" width="50px"/>
+                            <button class="btn-primary" style="border-radius: 25px">+</button>
+                        </li>
+                        <li class="d-flex">
+                            <span>Childrens</span>
+                            <button class="btn-danger" style="border-radius: 25px">-</button>
+                            <input type="text" class="form-control input-sm" [(ngModel)]="childrens" width="50px"/>
+                            <button class="btn-primary" style="border-radius: 25px">+</button>
+                        </li>
+                        <li class="d-flex">
+                            <span>Infants</span>
+                            <button class="btn-danger" style="border-radius: 25px">-</button>
+                            <input type="text" class="form-control input-sm" [(ngModel)]="infants" width="50px"/>
+                            <button class="btn-primary" style="border-radius: 25px">+</button>
+                        </li>
+                    </ul>
+                  </div>
+              </div>
+
+              <div class="p-2">
+                <button class="btn btn-primary" (click)="displayData()">Search</button>
+              </div>
+        </div>
+    </div>
+  </div>
+
+  <app-flight-form></app-flight-form>
